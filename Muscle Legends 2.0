@@ -1,0 +1,60 @@
+local screenGui = Instant.new ("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.name = "MuscleLegendsGUI"
+
+local frame = Instant.new ("Frame")
+frame.Parent = screenGui 
+frame.Size = UDim2.new (0,   300,   0,   200)
+frame.Position= UDim2.new (0.5,    -150,    0.5,    -150)
+frame.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+
+
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Parent = frame
+titleLabel.Size = UDim2.new(1, 0, 0.2, 0)
+titleLabel.Position = UDim2.new(0, 0, 0, 0)
+titleLabel.Text = "Muscle Legends GUI"
+titleLabel.TextColor3 = Color3.new(1, 1, 1)
+titleLabel.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+titleLabel.Font = Enum.Font.SourceSans
+titleLabel.TextSize = 20
+
+
+
+local statsButton = Instance.new("TextButton")
+statsButton.Parent = frame
+statsButton.Size = UDim2.new(0.8, 0, 0.2, 0)
+statsButton.Position = UDim2.new(0.1, 0, 0.3, 0)
+statsButton.Text = "Show My Stats"
+statsButton.TextColor3 = Color3.new(1, 1, 1)
+statsButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+statsButton.Font = Enum.Font.SourceSans
+statsButton.TextSize = 18
+
+
+
+statsButton.MouseButton1Click:Connect(function()
+    local player = game.Players.LocalPlayer
+    local strength = player.leaderstats and player.leaderstats.Strength.Value or "N/A"
+    local durability = player.leaderstats and player.leaderstats.Durability.Value or "N/A"
+    
+    print("Your Stats:")
+    print("Strength: " .. tostring(strength))
+    print("Durability: " .. tostring(durability))
+end)
+
+
+local closeButton = Instance.new("TextButton")
+closeButton.Parent = frame
+closeButton.Size = UDim2.new(0.8, 0, 0.2, 0)
+closeButton.Position = UDim2.new(0.1, 0, 0.6, 0)
+closeButton.Text = "Close GUI"
+closeButton.TextColor3 = Color3.new(1, 1, 1)
+closeButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+closeButton.Font = Enum.Font.SourceSans
+closeButton.TextSize = 18
+
+
+closeButton.MouseButton1Click:Connect(function()
+    screenGui:Destroy()
+end)
